@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <title>jQuery offline wrapper</title>
+  <script src="jquery-offline.js"></script>
+  <script src="jquery-fake-plugin.js"></script>
+  <script type="text/javascript">var tmp = 'hello';
+    jQuery(document).ready(function($) {
+      console.log('dom loaded');
+      console.log(tmp);
+      console.log(this);
+      // $.fn.fakePlugin()
+    });</script>
+</head>
+<body>
+  <h1>jQuery offline wrapper</h1>
+  <p id="test-ground">Test ground paragraph</p>
+  <script type="text/javascript">$(document).ready(function() {
+      $('#test-ground').text($('#test-ground').text() + ' works')
+    });
+    $('#test-ground').css('color', '#F00').css('background-color', '#FF0')</script>
+  <script type="text/javascript">/*document.write('<script src="jquery-1.7.2.min.js"><\/script>');*/
+    console.log('>> Fake? ', jQuery.isFake);
+    console.log('>> ', jQuery.fake.queue());</script>
+  <script type="text/javascript">console.log('>> Fake? ', jQuery.isFake);
+    // console.log('>> ', jQuery.fake.queue());
+    findFuncs = function(obj) {
+      var funcs = {}, found = 0;
+      for(var i in obj) {
+        if (typeof obj[i] == "function") {
+          found++;
+          // funcs[i] = findFuncs(obj[i]);
+          var innerFuncs = findFuncs(obj[i]);
+          if (innerFuncs.____length == 0)
+            funcs[i] = '';
+          else
+            funcs[i] = innerFuncs;
+        }
+      }
+      funcs.____length = found;
+      return funcs;
+    };
+    // console.log(findFuncs(jQuery));</script>
+</body>
